@@ -1,7 +1,14 @@
+import { getSymptoms } from "../src/symptoms/services";
+import { Examination } from "./examination";
+
 export default function Page() {
+  const language = "ptBR";
+  const symptoms = getSymptoms();
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hi app!</h1>
-    </div>
+    <main>
+      <h1>Gabi</h1>
+      <Examination language={language} symptoms={symptoms} />
+    </main>
   );
 }
