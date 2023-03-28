@@ -1,5 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "OPENAI_API_KEY",
+    "OPENAI_ORG_ID"
+  ],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
