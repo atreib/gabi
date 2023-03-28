@@ -3,6 +3,10 @@
 import { Language } from "../src/types";
 import { SymptomsForm } from "../src/symptoms/form";
 import type { Symptom, Symptoms } from "../src/symptoms/types";
+import { diagnose } from "./services";
+import { useState } from "react";
+import { DiagnosticResult } from "../src/diagnostic/types";
+import { Illness } from "../src/diagnostic/illness";
 
 type ExaminationProps = {
   symptoms: Symptoms;
@@ -10,15 +14,22 @@ type ExaminationProps = {
 };
 
 export function Examination({ symptoms, language }: ExaminationProps) {
-  function onSymptomsSelected(symptoms: Symptom[]) {
-    console.log(symptoms);
+  const [diagnostic, setDiagnostic] = useState<DiagnosticResult>();
+  async function onSymptomsSelected(symptoms: Symptom[]) {
+    const diagnostic = await diagnose({ symptoms, language });
+    setDiagnostic(diagnostic);
   }
 
   return (
-    <SymptomsForm
-      language={language}
-      symptoms={symptoms}
-      onSubmitCallback={onSymptomsSelected}
-    />
+    <section>
+      <SymptomsForm
+        language={language}
+        symptoms={symptoms}
+        onSubmitCallback={onSymptomsSelected}
+      />
+      {diagnostic ? (
+        <Illness language={language} illness={diagnostic.illness} />
+      ) : null}
+    </section>
   );
 }
