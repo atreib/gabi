@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-gray-50;
+}
+
+h1 {
+  @apply text-4xl font-bold text-indigo-400;
+}
+
+input[type="submit"] {
+  @apply bg-indigo-400 text-white font-bold py-2 px-4 rounded;
+}
+
+input[type="submit"]:hover {
+  @apply bg-indigo-500 cursor-pointer;
+}
+
+input[type="checkbox"] {
+  @apply mr-2 cursor-pointer;
+}
+
+input[type="checkbox"] ~ label:hover {
+  @apply text-indigo-500 cursor-pointer;
+}
+
+p {
+  @apply text-lg;
+}
+
+label {
+  @apply text-lg;
+}

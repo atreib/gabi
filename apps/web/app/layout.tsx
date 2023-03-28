@@ -4,7 +4,12 @@ import { PropsWithChildren } from "react";
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <html>
-      <body>{children}</body>
+      <body className="p-8 space-y-8">
+        <header>
+          <h1>Gabi</h1>
+        </header>
+        <section>{children}</section>
+      </body>
     </html>
   );
 }

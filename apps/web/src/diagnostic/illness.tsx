@@ -8,7 +8,7 @@ type IllnessProps = {
 
 export function Illness({ illness, language }: IllnessProps) {
   return (
-    <article>
+    <article className="space-y-4">
       <h1>{i18n.TITLE[language]}</h1>
       <section>
         <p>{illness}</p>
