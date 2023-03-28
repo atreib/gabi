@@ -23,7 +23,14 @@ function makePrompt(props: { symptoms: Symptom[]; language: Language }) {
     .join(", ")
     .replace(lastCommaRegex, ", and");
   const translationPrompt = promptI18n.TRANSLATION_PROMPT[props.language];
-  return `You are Gabi, a doctor AI. I am your patient. Given that I am feeling ${symptoms}, what are the 3 most common diseases that I may have? ${translationPrompt}`;
+  return `You are Gabi, a doctor AI. I am your patient.
+  Given that I am feeling ${symptoms},
+  what are the most common diseases that I may have,
+  and what are the most common pills or actions that I can take to decrease the symptoms?
+  Introduce yourself before answering,
+  and remember to add a disclaimer at the end of the message
+  saying that you are not a real doctor and I should go to one.
+  ${translationPrompt}`;
 }
 
 export const diagnose: IDiagnoseFn = async (props: {
@@ -36,10 +43,13 @@ export const diagnose: IDiagnoseFn = async (props: {
   });
 
   const response = await openai.createCompletion({
-    model: "text-davinci-002",
+    model: "text-davinci-003",
     prompt,
-    temperature: 0.7,
     max_tokens: 2048,
+    temperature: 0,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
   });
 
   return {
