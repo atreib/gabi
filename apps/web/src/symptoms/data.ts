@@ -91,4 +91,28 @@ export const symptoms = {
         "uma condição na qual as fezes são soltas e aquosas, muitas vezes acompanhadas por cólicas e dor abdominal",
     },
   },
+  nausea: {
+    enUS: {
+      name: "Nausea",
+      description:
+        "a feeling of sickness or discomfort in the stomach that may come with an urge to vomit",
+    },
+    ptBR: {
+      name: "Náusea",
+      description:
+        "uma sensação de mal-estar ou desconforto no estômago que pode vir acompanhada de vontade de vomitar",
+    },
+  },
+  rash: {
+    enUS: {
+      name: "Rash",
+      description:
+        "a change in the skin's color, texture, or appearance that may be accompanied by itching, pain, or other symptoms",
+    },
+    ptBR: {
+      name: "Erupção cutânea",
+      description:
+        "uma alteração na cor, textura ou aparência da pele que pode vir acompanhada de coceira, dor ou outros sintomas",
+    },
+  },
 } as const;
